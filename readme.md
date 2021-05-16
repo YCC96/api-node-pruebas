@@ -1,48 +1,98 @@
-## iniciar proyecto
-crear carpeta
-npm init
+## api-node-pruebas es un proyecto back-end para pruebas
 
-## crear estructura
-index.js
-carpeta/src
+## Levantar proyecto
+```
+cd /api-node-pruebas
+npm install
+npm start
+```
 
-## instalar express
-npm instal express --save
+## servicio proveedores
 
-## instalar nodemon
-npm install nodemon --save-dev
+```
+get
+http://{host}:port/proveedores/consulta-proveedores
 
-## instalar body-parse
-npm install body-parser --save
+Response:
+{
+    "cve_Error": 0,
+    "cve_Mensaje": "",
+    "response": [
+        {
+            "id": "221e7c66-b979-4556-a11a-cf9fe93925cb",
+            "nombre": "KYDSAPP",
+            "razonSocial": "KYDSAPP",
+            "direccion": "Direccion KYDSAPP"
+        }
+    ]
+}
+```
 
-## configurar package
-"start": "nodemon src/index.js"
+```
+post
+http://{host}:port/proveedores/agregar-proveedor
 
-## configurar index
-const express = require('express');
-const app = express();
+Request:
 
-const bodyParser = require("body-parser");
+{
+    "nombre": "KYDSAPP",
+    "razonSocial": "KYDSAPP",
+    "direccion": "Direccion KYDSAPP"
+}
 
-const port = 3000;
+Response: 
+{
+    "cve_Error": 0,
+    "cve_Mensaje": "",
+    "response": {
+        "id": "221e7c66-b979-4556-a11a-cf9fe93925cb",
+        "nombre": "KYDSAPP",
+        "razonSocial": "KYDSAPP",
+        "direccion": "Direccion KYDSAPP"
+    }
+}
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+Response con error:
+{
+    "cve_Error": 1,
+    "cve_Mensaje": "El provedor ya existe.",
+    "response": null
+}
 
-app.get('/', (req, res) => {
-    res.json({ message: "Welcome to yordy's application." });
-});
+```
 
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', '*');
-    res.header('Access-Control-Allow-Headers','*',
-    );
-    next();
-});
+```
+delete
+http://{host}:port/proveedores/eliminar-proveedor/6920bed7-76ca-4bb1-833f-90024a9d2623
 
-require('./routes/cliente.routes.js')(app);
+Response:
+{
+    "cve_Error": 0,
+    "cve_Mensaje": "Elemento eliminado con éxito",
+    "response": null
+}
 
-app.listen(port, function () {
-    console.log(`Server running at: ${port}/`);
-});
+No existe:
+{
+    "cve_Error": 1,
+    "cve_Mensaje": "No existe el id",
+    "response": null
+}
+```
+
+## servicio usuario
+
+```
+get
+http://{host}:port/usuario/consulta-usuario
+
+Response:
+{
+    "cve_Error": 0,
+    "cve_Mensaje": "Exito al consultar usuario",
+    "response": {
+        "nombre": "Bienvenido Candidato 01",
+        "version": "1.0.0"
+    }
+}
+```
