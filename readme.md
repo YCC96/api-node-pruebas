@@ -1,6 +1,11 @@
 ## api-node-pruebas es un proyecto back-end para pruebas
 
-## Levantar proyecto
+## Probar proyecto on-line
+```
+https://api-node-pruebas.herokuapp.com/
+```
+
+## Levantar proyecto local
 ```
 cd /api-node-pruebas
 npm install
