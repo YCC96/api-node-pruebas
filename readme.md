@@ -7,13 +7,13 @@ npm install
 npm start
 ```
 
-## servicio proveedores
+## Servicio proveedores
 
 ```
-get
+GET
 http://{host}:port/proveedores/consulta-proveedores
 
-Response:
+RESPONSE
 {
     "cve_Error": 0,
     "cve_Mensaje": "",
@@ -29,18 +29,17 @@ Response:
 ```
 
 ```
-post
+POST
 http://{host}:port/proveedores/agregar-proveedor
 
-Request:
-
+REQUEST
 {
     "nombre": "KYDSAPP",
     "razonSocial": "KYDSAPP",
     "direccion": "Direccion KYDSAPP"
 }
 
-Response: 
+RESPONSE
 {
     "cve_Error": 0,
     "cve_Mensaje": "",
@@ -52,7 +51,7 @@ Response:
     }
 }
 
-Response con error:
+RESPONSE CON ERROR
 {
     "cve_Error": 1,
     "cve_Mensaje": "El provedor ya existe.",
@@ -62,17 +61,17 @@ Response con error:
 ```
 
 ```
-delete
+DELETE
 http://{host}:port/proveedores/eliminar-proveedor/6920bed7-76ca-4bb1-833f-90024a9d2623
 
-Response:
+RESPONSE
 {
     "cve_Error": 0,
     "cve_Mensaje": "Elemento eliminado con éxito",
     "response": null
 }
 
-No existe:
+RESPONSE ERROR
 {
     "cve_Error": 1,
     "cve_Mensaje": "No existe el id",
@@ -80,13 +79,13 @@ No existe:
 }
 ```
 
-## servicio usuario
+## Servicio usuario
 
 ```
-get
+GET
 http://{host}:port/usuario/consulta-usuario
 
-Response:
+RESPONSE
 {
     "cve_Error": 0,
     "cve_Mensaje": "Exito al consultar usuario",
